@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DriveReport</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the essay itself, paragraph by paragraph, along a thin bus-route line. No added copy. */
+:root {
+  --bg: #EDF0F1;
+  --ink: #12181D;
+  --muted: #4B5760;
+  --rule: #C6CED3;
+  --line: #1558A6;
+  --track: #D9E0E4;
+  --display: 'Archivo', 'Arial Narrow', Arial, sans-serif;
+  --body: 'Atkinson Hyperlegible', Verdana, sans-serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1418; --ink: #E4EAEE; --muted: #9AA8B2; --rule: #2A353D;
+    --line: #6AAAF0; --track: #25303A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1418; --ink: #E4EAEE; --muted: #9AA8B2; --rule: #2A353D;
+  --line: #6AAAF0; --track: #25303A; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 21px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 64px 96px;
+}
+.wrap { max-width: 800px; margin: 0 auto; }
+:focus-visible { outline: 3px solid var(--line); outline-offset: 3px; }
+
+h1 {
+  font: 700 clamp(52px, 10vw, 104px)/1 var(--display);
+  font-stretch: 76%; letter-spacing: -.01em; margin: 0 0 12px;
+}
+.where { font: 500 15px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 72px; }
+
+.route { position: relative; padding-left: 56px; }
+.route::before {
+  content: ""; position: absolute; left: 11px; top: 14px; bottom: 14px;
+  width: 6px; background: var(--line); border-radius: 3px;
+}
+.stop { position: relative; padding-bottom: 56px; }
+.stop::before {
+  content: ""; position: absolute; left: -56px; top: 7px; width: 28px; height: 28px;
+  border-radius: 50%; background: var(--bg); border: 6px solid var(--line);
+}
+.stop.end { padding-bottom: 0; }
+.stop.end::before { border-radius: 4px; background: var(--line); }
+.stop p { margin: 0; max-width: 60ch; }
+
+.chart { margin: 32px 0 0; display: grid; gap: 4px; max-width: 640px; }
+.row { display: grid; grid-template-columns: 1fr 76px; gap: 4px 12px; align-items: end; padding: 10px 0; border-top: 1px solid var(--rule); }
+.row .q { grid-column: 1 / -1; font-size: 18px; line-height: 1.35; }
+.bar { height: 12px; background: var(--track); border-radius: 2px; }
+.bar i { display: block; height: 100%; background: var(--line); border-radius: 2px; }
+.row .v { font: 500 22px/1 var(--mono); text-align: right; font-variant-numeric: tabular-nums; }
+.axis { display: flex; justify-content: space-between; font: 400 13px/1 var(--mono); color: var(--muted); padding-top: 6px; border-top: 1px solid var(--rule); max-width: calc(100% - 88px); }
+
+@media (max-width: 600px) {
+  body { font-size: 19px; padding-block: 40px 64px; }
+  .route { padding-left: 44px; }
+  .route::before { left: 7px; }
+  .stop::before { left: -44px; width: 22px; height: 22px; border-width: 5px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bar i { transition: width .6s ease; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<h1>DriveReport</h1>
+<p class="where">Astana</p>
+
+<main class="route">
+
+<section class="stop">
+<p>Growing up in Astana, I often experienced problems with public transportation. In winter, buses were overcrowded. Road repairs changed bus routes and disrupted my plans. In spring, some streets flooded almost knee-deep, and in summer, some buses broke down because their engines overheated.</p>
+</section>
+
+<section class="stop">
+<p>I began wondering whether these problems could be solved and whether people would be willing to report them. I started by mapping Astana’s bus routes, marking congested streets, and trying to understand how the network was distributed. I wanted to see how individual road problems could affect people across the city.</p>
+</section>
+
+<section class="stop">
+<p>Then I tried to build a Telegram bot. After a lot of thinking and two trial versions, I realized that I did not yet have the skills and tools to continue in that direction. But I did not want to give up on the idea. Before moving on to a website, I wrote an article titled “Gamification Framework for Driver Network: A New Method for Real-Time Data Gathering and Adaptive Public Transportation Optimization.” In it, I explored how gamification in a driver network might help gather real-time data and improve public transportation.</p>
+</section>
+
+<section class="stop">
+<p>Later, I created a website with an incident map and a form for submitting reports with photos. It helped me turn an idea into something I could show and discuss. But I began to understand that liking the idea of an app does not mean someone will actually use it. And if people never learn what happened after submitting a report, they may not report again.</p>
+</section>
+
+<section class="stop">
+<p>To find out whether others recognized the same problems, I surveyed 42 people. In my survey, 71.4% said they used public transportation every day. Another 57.1% said they did not report problems because they doubted anything would be fixed. Aggressive driving was named by 40.5%, and blocked bus stops by 33.3%. Meanwhile, 57.2% rated the app idea 4 or 5 out of 5. These responses encouraged me to keep working, but I know a survey of 42 people cannot represent everyone in Astana.</p>
+<div class="chart" role="group" aria-label="Survey results, percent of 42 respondents as reported">
+<div class="row"><div class="q">used public transportation every day</div><div class="bar"><i style="width:71.4%"></i></div><div class="v">71.4%</div></div>
+<div class="row"><div class="q">did not report problems because they doubted anything would be fixed</div><div class="bar"><i style="width:57.1%"></i></div><div class="v">57.1%</div></div>
+<div class="row"><div class="q">named aggressive driving</div><div class="bar"><i style="width:40.5%"></i></div><div class="v">40.5%</div></div>
+<div class="row"><div class="q">named blocked bus stops</div><div class="bar"><i style="width:33.3%"></i></div><div class="v">33.3%</div></div>
+<div class="row"><div class="q">rated the app idea 4 or 5 out of 5</div><div class="bar"><i style="width:57.2%"></i></div><div class="v">57.2%</div></div>
+<div class="axis" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+</div>
+</section>
+
+<section class="stop">
+<p>While developing DriveReport, I also began thinking about trustworthy reports and privacy. I explored comparing a photo’s location data with the reported incident location. But I realized that missing GPS data does not necessarily mean a report is false; some phones simply do not save it. Users should understand the limits of verification rather than face a quick assumption. I also developed the idea of “Silent Witness,” allowing someone to report a problem anonymously or under a pseudonym.</p>
+</section>
+
+<section class="stop">
+<p>I attended Alem.ai Demo Day for one day. It gave me a chance to look at my project from a different perspective and ask whether I was testing my assumptions and listening enough to the people I hoped to serve. Along the way, I taught myself web development, learned about photo data, and explored how an app might work without an internet connection.</p>
+</section>
+
+<section class="stop end">
+<p>I do not claim that DriveReport has already solved Astana’s transportation problems. I still need to test the idea with drivers, keep learning, and find people who can help me work toward a pilot. It began with ordinary trips and one question: why is it so hard to report problems everyone can see? Now I am trying to find an answer by turning that question into a project.</p>
+</section>
+
+</main>
+</div>
+
+</body>
+</html>
